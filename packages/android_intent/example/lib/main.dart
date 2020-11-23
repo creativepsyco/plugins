@@ -154,6 +154,19 @@ class ExplicitIntentsWidget extends StatelessWidget {
     intent.launch();
   }
 
+  void _openEmail() {
+    final AndroidIntent intent = const AndroidIntent(
+      action: 'android.intent.action.SENDTO',
+      data: 'mailto:',
+      arguments: {
+        'android.intent.extra.EMAIL': <String>['mohit.kanwal@gmail.com'],
+        'android.intent.extra.SUBJECT': 'Hello Everyone',
+        'android.intent.extra.TEXT': 'Hello Everyone'
+      }
+    );
+    intent.launch();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,6 +211,11 @@ class ExplicitIntentsWidget extends StatelessWidget {
                   'Tap here to open Location Settings Configuration',
                 ),
                 onPressed: _openLocationSettingsConfiguration,
+              ),RaisedButton(
+                child: const Text(
+                  'Tap here for calling email',
+                ),
+                onPressed: _openEmail,
               ),
               RaisedButton(
                 child: const Text(
